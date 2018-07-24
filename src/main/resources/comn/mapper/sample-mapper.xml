@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sample.springbatch.mapper.SampleDao">
+
+	<select id="selectExistedSample" parameterType="Map"
+		resultType="com.sample.springbatch.vo.Sample">
+		SELECT id,firstInputDt
+		FROM noti
+		WHERE id = #{id}
+		LIMIT 1
+	</select>
+
+	<insert id="insertSample" parameterType="com.sample.springbatch.vo.Sample"
+		keyProperty="id" useGeneratedKeys="true">
+		INSERT INTO `sy_noti`.`noti` (`id`, `firstInputDt`) VALUES (#{id}, #{firstInputDt});
+
+	</insert>
+
+	<update id="updateSample" parameterType="com.sample.springbatch.vo.Sample"
+		>
+
+		UPDATE SY_NOTI.NOTI
+		SET
+		firstInputDt = #{firstInputDt}
+
+		WHERE id=#{id}
+
+	</update>
+
+
+</mapper>
